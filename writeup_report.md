@@ -39,21 +39,21 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of  strided convolutions in the first three convolutional layers with a 2×2 stride and a 5×5 kernel, and a non-strided convolution with a 3×3 kernel size in the final two convolutional layers.(model.py lines 50-54) . The five convolutional layers followed with three fully connected layers, leading to a final output steering.(model.py lines 58-60)
+My model consists of  strided convolutions in the first three convolutional layers with a 2×2 stride and a 5×5 kernel, and a non-strided convolution with a 3×3 kernel size in the final two convolutional layers.([model.py lines 50-54](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L50)) . The five convolutional layers followed with three fully connected layers, leading to a final output steering.([model.py lines 58-60](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L58))
 
-The model includes RELU layers to introduce nonlinearity (code line 50-60), and the data is normalized in the model using a Keras lambda layer (code line 47). 
+The model includes RELU layers to introduce nonlinearity ([model.py lines 50-60](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L50)), and the data is normalized in the model using a Keras lambda layer ([model.py line 47](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#47)). 
 
 #### 2. Attempts to reduce overfitting in the model
 
-I tried to use the dropout layers but I found that it is not very helpful for my model. So I decided not to use dropout. Instead, I use early stoping to reduce overfitting. (model.py lines 70). 
+I tried to use the dropout layers but I found that it is not very helpful for my model. So I decided not to use dropout. Instead, I use early stoping to reduce overfitting. ([model.py line 70](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L70)). 
 
 ![image-20180612210040441](https://ws2.sinaimg.cn/large/006tKfTcly1fs8p1be5t7j30fi0arwfh.jpg)
 
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 25-34). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was trained and validated on different data sets to ensure that the model was not overfitting ([model.py lines 25-34](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L25)). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 67).
+The model used an adam optimizer, so the learning rate was not tuned manually ([model.py line 67](https://github.com/LFElodie/CarND-Behavioral-Cloning-P3/blob/master/model.py#L67)).
 
 #### 4. Appropriate training data
 
@@ -71,7 +71,7 @@ After several epochs training. The car can't even reach the first curve. It alwa
 
 The simulator captures images from three cameras mounted on the car: a center, right and left camera. The image below gives a sense for how multiple cameras are used to train a self-driving car. This image shows a bird's-eye perspective of the car. The driver is moving forward but wants to turn towards a destination on the left. From the perspective of the left camera, the steering angle would be less than the steering angle from the center camera. From the right camera's perspective, the steering angle would be larger than the angle from the center camera. 
 
-![Angle between the destination and each camera](https://s3.cn-north-1.amazonaws.com.cn/u-img/998f4ea8-ae42-41d1-a6aa-b5ff3af995e1)
+![20180613152888682065925.png](http://p37mg8cnp.bkt.clouddn.com/20180613152888682065925.png)
 
 ​				Angle between the destination and each camera(image from udacity)
 
@@ -112,17 +112,17 @@ Non-trainable params: 0
 
 To capture good driving behavior, I first recorded several laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![center_2016_12_01_13_31_12_937](data/forward/IMG/center_2016_12_01_13_31_12_937.jpg)
+![20180613152888665720311.jpg](http://p37mg8cnp.bkt.clouddn.com/20180613152888665720311.jpg)
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to drive itself to the center of the track. These images show what a recovery from  left side of the track looks like.
 
-![WX20180613-141711](../../Downloads/WX20180613-141711.png)
+![2018061315288866901627.png](http://p37mg8cnp.bkt.clouddn.com/2018061315288866901627.png)
 
 Then I repeated this process on track two in order to get more data points.
 
 To augment the data set, I also flipped images and angles thinking that this would help with the left turn bias. For example, here is an image that has then been flipped:
 
-![WX20180613-142220](../../Downloads/WX20180613-142220.png)
+![20180613152888676949004.png](http://p37mg8cnp.bkt.clouddn.com/20180613152888676949004.png)
 
 After the collection process, I had 24654 number of data points. 
 
